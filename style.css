@@ -1,0 +1,512 @@
+:root {
+    --neon-primary: #00f7ff;
+    --neon-secondary: #00ff88;
+    --neon-accent: #ff00ff;
+    --dark-bg: #0a0b1e;
+    --card-bg: rgba(16, 18, 46, 0.8);
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 30%);
+}
+
+.hero {
+    background: url('/img/fondopolitecnico.png') no-repeat center center;
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    height: 100vh; /* Altura completa de la pantalla */
+    position: relative; /* Para que el contenido dentro se posicione correctamente */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    /*background: linear-gradient(135deg, rgba(0,247,255,0.1), rgba(255,0,255,0.1));*/
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%; /* Ajusta este valor para controlar el tamaño del degradado */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(10, 11, 30, 1) 100%);
+    z-index: 2; /* Asegúrate de que el degradado esté sobre la imagen de fondo */
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--neon-primary), var(--neon-secondary), var(--neon-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+    animation: glowText 3s ease-in-out infinite;
+}
+
+@keyframes glowText {
+    0%, 100% { filter: brightness(100%) blur(0); }
+    50% { filter: brightness(150%) blur(1px); }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 1000;
+    background: rgba(10, 11, 30, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 2rem; /* Agrega un padding horizontal para alejarlo de los bordes */
+    border-bottom: 1px solid var(--neon-primary);
+    display: flex; /* Flexbox para centrar los elementos */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    max-width: 900px; /* Reduce el ancho máximo para centrado */
+    margin: 0 auto; /* Centra el contenido dentro del `nav` */
+    padding: 0; /* Elimina cualquier padding que pueda desplazarlo */
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--neon-primary), var(--neon-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: 50px;
+}
+
+nav a:hover::before {
+    opacity: 1;
+}
+
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section {
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ajuste específico para la sección de redes sociales */
+.social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-card {
+    background: var(--card-bg);
+    border-radius: 50%; /* Círculos */
+    width: 80px; /* Tamaño reducido */
+    height: 80px; /* Tamaño reducido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+    position: relative;
+}
+
+.social-card:hover {
+    transform: scale(1.1);
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+.social-img-container img {
+    width: 60px; /* Tamaño del icono */
+    height: 40px;
+}
+
+/* Opcional: Ajustes para dispositivos pequeños */
+@media (max-width: 768px) {
+    .social-grid {
+        flex-direction: row;
+    }
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(0, 247, 255, 0.1),
+        rgba(255, 0, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card h3 {
+    color: var(--neon-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.img-container {
+    width: 100%;
+    height: 200px;
+    margin: 1rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-container2 {
+    width: 100%;
+    height: 500px;
+    margin: 1rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .img-container img {
+    transform: scale(1.1);
+}
+
+.specs {
+    margin-top: 1.5rem;
+}
+
+.specs li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.specs li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--neon-secondary);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    margin: 2rem 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    background: var(--card-bg);
+}
+
+.comparison-table th {
+    background: linear-gradient(45deg, var(--neon-primary), var(--neon-secondary));
+    color: var(--dark-bg);
+    font-weight: bold;
+}
+
+.comparison-table tr:hover td {
+    background: rgba(0, 247, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, var(--neon-primary), var(--neon-secondary));
+}
+
+/*INTEGRANTES*/
+:root {
+    --neon-blue: #00f0ff;
+    --electric-purple: #8e44ad;
+    --cyber-green: #0ff736;
+    --deep-black: #0a0a0a;
+    --glitch-pink: #ff00b4;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, var(--deep-black), #1a1a2e);
+    color: var(--neon-blue);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+.cyberpunk-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.glitch-header {
+    margin-top: 1px; /* Reduce el espacio superior */
+    margin-bottom: 0; /* Reduce el espacio inferior */
+    text-align: center;
+    position: relative;
+    animation: glitch 0.3s infinite;
+}
+.glitch-header h1 {
+    margin-top: 10px; /* Reduce el espacio superior */
+    margin-bottom: 0; /* Reduce el espacio inferior */
+    font-size: 4rem;
+    background: linear-gradient(45deg, var(--neon-blue), var(--glitch-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+.cyberpunk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.cyberpunk-grid2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Define 2 columnas */
+    gap: 30px; /* Espacio entre contenedores */
+    justify-content: center; /* Centra horizontalmente */
+}
+.cyberpunk-grid3 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+    gap: 60px; /* Espacio entre contenedores */
+    justify-content: center; /* Centrar horizontalmente */
+}
+.cyber-card {
+    background: rgba(30,30,50,0.7);
+    border: 2px solid var(--neon-blue);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.cyber-card2 {
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    max-width: 1200px; /* Opcional: limita el ancho máximo */
+    margin: 20px auto; /* Centra el contenedor horizontalmente y agrega espacio entre ellos */
+    padding: 20px; /* Espacio interno */
+    background: rgba(30, 30, 50, 0.7); /* Fondo con transparencia */
+    border: 2px solid var(--neon-primary); /* Borde visible */
+    border-radius: 15px; /* Bordes redondeados */
+    text-align: center; /* Centra el contenido del texto */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+.cyberpunk-grid2 {
+    display: block; /* Cambia a flujo de bloque */
+    padding: 20px; /* Espaciado alrededor de la cuadrícula */
+}
+
+
+.section-title {
+color: white; /* Cambia el color del texto a blanco */
+}
+#descripcion-empresa {
+color: white;
+}
+
+/*.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.05) 0,
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    animation: scan 5s linear infinite;
+}
+@keyframes scan {
+    0% { transform: rotate(0deg) translate(0,0); }
+    100% { transform: rotate(360deg) translate(0,0); }
+}
+    @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}*/
+
+.cyber-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--electric-purple);
+}
+.cyber-icon {
+    font-size: 3rem;
+    color: var(--cyber-green);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--cyber-green);
+}
+.table-cyber {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+.table-cyber th, .table-cyber td {
+    background: rgba(15,15,30,0.8);
+    color: var(--neon-blue);
+    padding: 15px;
+    border: 1px solid var(--electric-purple);
+    text-align: left;
+}
+.btn-cyber {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--glitch-pink);
+    color: var(--deep-black);
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.btn-cyber:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--glitch-pink);
+}
+.cyber-card p {
+    font-size: 1rem;
+    color: #d3d3d3;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.cyber-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.cyber-card i {
+    margin-bottom: 15px;
+    font-size: 3rem;
+}
+.profile-image {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100px; /* Tamaño de la imagen */
+    height: 100px; /* Asegúrate de que el ancho y alto sean iguales */
+    border-radius: 200%; /* Convierte la imagen en un círculo */
+    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor circular */
+    border: 4px solid white; /* Borde opcional para resaltar la imagen */
+}
