@@ -26,7 +26,7 @@ body {
 }
 
 .hero {
-    background: url('/img/fondopolitecnico.png') no-repeat center center;
+    background: url('img/fondopolitecnico.png') no-repeat center center;
     background-size: cover; /* Asegura que la imagen cubra toda la sección */
     height: 100vh; /* Altura completa de la pantalla */
     position: relative; /* Para que el contenido dentro se posicione correctamente */
