@@ -514,12 +514,5 @@ color: white;
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 70vh; /* Ocupa toda la altura de la pantalla */
 }
-video {
-    display: block; /* Asegura que el video no tenga espacio alrededor */
-    margin: 0; /* Elimina cualquier margen externo */
-    padding: 0; /* Elimina cualquier relleno interno */
-    width: 100%; /* Asegura que el video ocupe todo el ancho del contenedor */
-    height: auto; /* Mantiene las proporciones */
-}
+
