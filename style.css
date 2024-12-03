@@ -516,7 +516,6 @@ color: white;
     align-items: center; /* Centra verticalmente */
     height: 100vh; /* Ocupa toda la altura de la pantalla */
 }
-
 video {
     display: block; /* Asegura que el video no tenga espacio alrededor */
     margin: 0; /* Elimina cualquier margen externo */
